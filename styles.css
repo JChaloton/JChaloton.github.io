@@ -147,6 +147,162 @@ button:disabled {
     margin: 20px 0;
 }
 
+/* Service selection styles */
+.service-selection {
+    margin: 20px 0;
+}
+
+.service-selection h3 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.service-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.service-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.service-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.service-btn span {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* OneDrive button styling */
+.onedrive-btn {
+    background-color: #53b0ea;
+    color: white;
+}
+
+.onedrive-btn:hover {
+    background-color: #2b79b5;
+}
+
+/* Google Drive button styling */
+.gdrive-btn {
+    background-color: #43a172;
+    color: white;
+}
+
+.gdrive-btn:hover {
+    background-color: #2aa969;
+}
+
+/* Video Instructions Styling */
+.video-instructions {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease-out;
+    overflow: hidden;
+}
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 1000px;
+        opacity: 1;
+    }
+}
+
+.video-container {
+    margin-bottom: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.video-container video {
+    display: block;
+    width: 100%;
+}
+
+/* Action Button Styling */
+.action-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    animation: pulse 1.5s infinite;
+}
+
+.action-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    animation: none;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 120, 212, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 120, 212, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 120, 212, 0);
+    }
+}
+
+.onedrive-action {
+    background-color: #53b0ea;
+    color: white;
+}
+
+.onedrive-action:hover {
+    background-color: #2b79b5;
+}
+
+.gdrive-action {
+    background-color: #43a172;
+    color: white;
+}
+
+.gdrive-action:hover {
+    background-color: #2aa969;
+}
+
 /* Progress bar */
 .progress-container {
     margin: 20px 0;

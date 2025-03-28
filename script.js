@@ -6,6 +6,13 @@ const accessDiv = document.getElementById('accessDiv');
 const uploadDiv = document.getElementById('uploadDiv');
 const schoolHeader = document.getElementById('schoolHeader');
 const schoolSubheader = document.getElementById('schoolSubheader');
+// Service elements
+let oneDriveBtn;
+let googleDriveBtn;
+let oneDriveInstructions;
+let googleDriveInstructions;
+let oneDriveLink;
+let googleDriveLink;
 
 // Access codes for each school
 const ACCESS_CODES = {
@@ -19,7 +26,7 @@ const ACCESS_CODES = {
     },
     "AirinK.AH": {
         folder: "Airin",
-        schoolName: "ที่อัปโหลดไฟล์สำหรับคนน่ารักที่สุดในโลก"
+        schoolName: "คนน่ารักที่สุดในโลก"
     }
 };
 
@@ -30,10 +37,26 @@ const ONEDRIVE_LINKS = {
     'Airin': 'https://1drv.ms/f/c/1523c4a0f21e9725/ElrR_cBPAYNHgeXj6opsliQBVUHKp0BZlOHgx35MaIVmlQ?e=btokkm'
 };
 
+// Google Drive direct links (with the same naming convention)
+const GDRIVE_LINKS = {
+    'Chaiyaphum': 'https://drive.google.com/drive/folders/1YKVUug1p7cTN4jtkitW13N-thbutPqo_?usp=drive_link',
+    'Songkhla': 'https://drive.google.com/drive/folders/14a8XOt06JgE_EeNlP-OMwxKe4zBTRrab?usp=drive_link',
+    'Airin': 'https://drive.google.com/drive/folders/your-airin-folder-id'
+};
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
+    // Get references to elements
+    oneDriveBtn = document.getElementById('oneDriveBtn');
+    googleDriveBtn = document.getElementById('googleDriveBtn');
+    oneDriveInstructions = document.getElementById('oneDriveInstructions');
+    googleDriveInstructions = document.getElementById('googleDriveInstructions');
+    oneDriveLink = document.getElementById('oneDriveLink');
+    googleDriveLink = document.getElementById('googleDriveLink');
+    
     // Event Listeners
-    uploadBtn.addEventListener('click', redirectToOneDrive);
+    if (oneDriveBtn) oneDriveBtn.addEventListener('click', () => toggleServiceInstructions('onedrive'));
+    if (googleDriveBtn) googleDriveBtn.addEventListener('click', () => toggleServiceInstructions('gdrive'));
     accessBtn.addEventListener('click', validateAccessCode);
     
     // Check for access code in local storage (for returning users)
@@ -47,9 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.removeItem('schoolAccess');
         }
     }
-    
-    // Update button text
-    uploadBtn.textContent = 'ไปที่หน้าอัปโหลดวิดีโอ';
     
     // Add enter key support for the access code input
     accessCode.addEventListener('keyup', function(event) {
@@ -108,10 +128,28 @@ function showUploadForm(folder, schoolName) {
     
     // Store the folder for later use
     uploadDiv.dataset.folder = folder;
+    
+    // Update the service links based on the folder
+    updateServiceLinks(folder);
 }
 
-// Redirect to OneDrive
-function redirectToOneDrive() {
+// Update service links based on selected folder
+function updateServiceLinks(folder) {
+    const oneDriveUrl = ONEDRIVE_LINKS[folder];
+    const gdriveUrl = GDRIVE_LINKS[folder];
+    
+    if (oneDriveLink && oneDriveUrl) {
+        oneDriveLink.href = oneDriveUrl;
+    }
+    
+    if (googleDriveLink && gdriveUrl) {
+        googleDriveLink.href = gdriveUrl;
+    }
+}
+
+// Toggle video instructions for selected service
+function toggleServiceInstructions(service) {
+    // Get the folder from data attribute
     const folder = uploadDiv.dataset.folder;
     
     if (!folder) {
@@ -121,12 +159,58 @@ function redirectToOneDrive() {
         return;
     }
     
-    const oneDriveLink = ONEDRIVE_LINKS[folder];
+    // Hide all instruction containers first
+    if (oneDriveInstructions) oneDriveInstructions.style.display = 'none';
+    if (googleDriveInstructions) googleDriveInstructions.style.display = 'none';
     
-    if (!oneDriveLink) {
+    // Show the selected service instructions
+    if (service === 'onedrive' && oneDriveInstructions) {
+        oneDriveInstructions.style.display = 'block';
+        // Start or restart the video if it exists
+        const video = oneDriveInstructions.querySelector('video');
+        if (video) {
+            video.currentTime = 0;
+            video.play().catch(e => console.log('Video autoplay prevented:', e));
+        }
+    } else if (service === 'gdrive' && googleDriveInstructions) {
+        googleDriveInstructions.style.display = 'block';
+        // Start or restart the video if it exists
+        const video = googleDriveInstructions.querySelector('video');
+        if (video) {
+            video.currentTime = 0;
+            video.play().catch(e => console.log('Video autoplay prevented:', e));
+        }
+    }
+}
+
+// Legacy functions for backward compatibility
+function redirectToService(service) {
+    const folder = uploadDiv.dataset.folder;
+    
+    if (!folder) {
+        alert('ไม่พบข้อมูลโรงเรียน โปรดลองเข้าสู่ระบบใหม่อีกครั้ง');
+        localStorage.removeItem('schoolAccess');
+        location.reload();
+        return;
+    }
+    
+    let serviceLink;
+    
+    if (service === 'onedrive') {
+        serviceLink = ONEDRIVE_LINKS[folder];
+    } else if (service === 'gdrive') {
+        serviceLink = GDRIVE_LINKS[folder];
+    }
+    
+    if (!serviceLink) {
         alert('ไม่พบลิงก์สำหรับอัปโหลดวิดีโอ โปรดติดต่อคุณจิรพงศ์ ชโลธรพิเศษที่ 0854350566.');
         return;
     }
-    // Open OneDrive link in a new tab
-    window.open(oneDriveLink, '_blank');
+    
+    // Open service link in a new tab
+    window.open(serviceLink, '_blank');
+}
+
+function redirectToOneDrive() {
+    redirectToService('onedrive');
 } 

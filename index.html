@@ -30,17 +30,65 @@
                 <h2 id="schoolHeader" class="ibm-plex-sans-thai-bold">ชื่อโรงเรียน</h2>
                 <p id="schoolSubheader">ตัวอัปโหลดวิดีโอ</p>
             </div>
-            
+            <div>
+                <h2>ขั้นตอนการอัปโหลด</h2>
+                <ol>
+                    <li>เลือกบริการที่ต้องการใช้อัปโหลดวิดีโอ (OneDrive หรือ Google Drive)</li>
+                    <li>ทำตามคำแนะนำสำหรับบริการที่เลือก</li>
+                    <li>รอให้การอัปโหลดของคุณเสร็จก่อนที่จะปิดหน้าอัปโหลด</li>
+                </ol>
+            </div>
             <div class="info-box">
-                <p>คลิกปุ่มด้านล่างเพื่อไปยังหน้าอัปโหลดวิดีโอ</p>
+                <p>กรุณาเลือกบริการที่ต้องการใช้อัปโหลดวิดีโอ</p>
                 <p><strong>สำคัญ:</strong> โปรดรอให้การอัปโหลดของคุณสำเร็จก่อนที่จะปิดหน้าอัปโหลด</p>
             </div>
             
-            <div class="button-group">
+            <div class="service-selection">
+                <h3 class="ibm-plex-sans-thai-bold">เลือกบริการ</h3>
+                <div class="service-buttons">
+                    <button id="oneDriveBtn" class="service-btn onedrive-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Microsoft_Office_OneDrive_%282019%E2%80%93present%29.svg" alt="OneDrive logo" class="service-logo">
+                        <span>OneDrive</span>
+                    </button>
+                    <button id="googleDriveBtn" class="service-btn gdrive-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" alt="Google Drive logo" class="service-logo">
+                        <span>Google Drive</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Video Instructions Containers -->
+            <div id="oneDriveInstructions" class="video-instructions" style="display: none;">
+                <div class="video-container">
+                    <!-- Replace with your GitHub Pages hosted video path -->
+                    <video controls width="100%">
+                        <source src="videos/onedrive-instructions.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="action-button-container">
+                    <a id="oneDriveLink" href="#" target="_blank" class="action-button onedrive-action">ไปที่ OneDrive</a>
+                </div>
+            </div>
+            
+            <div id="googleDriveInstructions" class="video-instructions" style="display: none;">
+                <div class="video-container">
+                    <!-- Replace with your GitHub Pages hosted video path -->
+                    <video controls width="100%">
+                        <source src="videos/gdrive-instructions.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="action-button-container">
+                    <a id="googleDriveLink" href="#" target="_blank" class="action-button gdrive-action">ไปที่ Google Drive</a>
+                </div>
+            </div>
+
+            <!-- Legacy button for backward compatibility -->
+            <div class="button-group" style="display: none;">
                 <button id="uploadBtn">ไปยังหน้าอัปโหลดวิดีโอ</button>
             </div>
         </div>
-
         <footer>
             <p>&copy; 2023 TSL-ONE. All rights reserved.</p>
         </footer>
