@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSL-ONE Video Upload</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Debug styles for testing -->
+    <style>
+        #debug-panel {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TSL-ONE Video Upload</h1>
+            <p>Upload videos for the Thai Sign Language project</p>
+        </header>
+
+        <!-- Access Code Section -->
+        <div id="accessDiv" class="section">
+            <h2>Enter Access Code</h2>
+            <div class="form-group">
+                <input type="password" id="accessCode" placeholder="Enter access code">
+                <button id="accessBtn">Submit</button>
+            </div>
+            <!-- Debug help -->
+            <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                <p>Available codes for testing:</p>
+                <ul>
+                    <li>SongkhlaSign68</li>
+                    <li>ChaiyaphumSign68</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Upload Section (hidden initially) -->
+        <div id="uploadDiv" class="section" style="display: none;">
+            <div class="school-header">
+                <h2 id="schoolHeader">School Name</h2>
+                <p id="schoolSubheader">Video Upload Portal</p>
+            </div>
+            
+            <div class="info-box">
+                <p>Click the button below to be redirected to OneDrive where you can upload your videos directly.</p>
+                <p><strong>Important:</strong> Please wait for your files to fully upload before closing the OneDrive window.</p>
+            </div>
+            
+            <div class="button-group">
+                <button id="uploadBtn">Go to OneDrive Upload</button>
+            </div>
+        </div>
+
+        <!-- Debug panel for troubleshooting -->
+        <div id="debug-panel"></div>
+
+        <footer>
+            <p>&copy; 2023 TSL-ONE Project. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Debug helper function
+        function logDebug(message) {
+            console.log(message);
+            const debugPanel = document.getElementById('debug-panel');
+            if (debugPanel) {
+                const time = new Date().toLocaleTimeString();
+                debugPanel.innerHTML += `[${time}] ${message}\n`;
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+    <script>
+        // Additional debug script
+        document.addEventListener('DOMContentLoaded', function() {
+            logDebug('Page fully loaded');
+            
+            // Add direct validation for testing
+            window.validateDirectly = function(code) {
+                logDebug(`Testing direct validation with: "${code}"`);
+                if (window.ACCESS_CODES && window.ACCESS_CODES[code]) {
+                    logDebug('✅ Code is valid!');
+                    return true;
+                } else {
+                    logDebug('❌ Code is invalid');
+                    if (window.ACCESS_CODES) {
+                        logDebug(`Available codes: ${JSON.stringify(Object.keys(window.ACCESS_CODES))}`);
+                    } else {
+                        logDebug('ACCESS_CODES object not found in global scope');
+                    }
+                    return false;
+                }
+            };
+            
+            // Debug button
+            const accessDiv = document.getElementById('accessDiv');
+            if (accessDiv) {
+                const debugBtn = document.createElement('button');
+                debugBtn.textContent = 'Debug';
+                debugBtn.style.marginTop = '10px';
+                debugBtn.style.background = '#eee';
+                debugBtn.style.color = '#333';
+                debugBtn.onclick = function() {
+                    const code = document.getElementById('accessCode').value.trim();
+                    validateDirectly(code);
+                };
+                accessDiv.appendChild(debugBtn);
+            }
+        });
+    </script>
+</body>
+</html> 
