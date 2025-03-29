@@ -41,7 +41,7 @@ const ONEDRIVE_LINKS = {
 const GDRIVE_LINKS = {
     'Chaiyaphum': 'https://drive.google.com/drive/folders/1YKVUug1p7cTN4jtkitW13N-thbutPqo_?usp=drive_link',
     'Songkhla': 'https://drive.google.com/drive/folders/14a8XOt06JgE_EeNlP-OMwxKe4zBTRrab?usp=drive_link',
-    'Airin': 'https://drive.google.com/drive/folders/your-airin-folder-id'
+    'Airin': 'https://drive.google.com/drive/folders/1iW7-CYpyeEoeTznsrlnKA9hxawcnWjaM?usp=drive_link'
 };
 
 // Initialize
