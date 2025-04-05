@@ -24,9 +24,21 @@ const ACCESS_CODES = {
         folder: "Chaiyaphum",
         schoolName: "โรงเรียนโสตศึกษาจังหวัดชัยภูมิ"
     },
+    "NakhonsiSign68": {
+        folder: "Nakhonsithammarat",
+        schoolName: "โรงเรียนโสตศึกษาจังหวัดนครศรีธรรมราช"
+    },
     "AirinK.AH": {
         folder: "Airin",
         schoolName: "คนน่ารักที่สุดในโลก"
+    },
+    "ChonburiSign68": {
+        folder: "Chonburi",
+        schoolName: "โรงเรียนโสตศึกษาจังหวัดชลบุรี"
+    },
+    "SetsatianSign68": {
+        folder: "Setsatian",
+        schoolName: "โรงเรียนเศรษฐเสถียร"
     }
 };
 
@@ -34,14 +46,20 @@ const ACCESS_CODES = {
 const ONEDRIVE_LINKS = {
     'Chaiyaphum': 'https://1drv.ms/f/c/1523c4a0f21e9725/EoIkbcih5slGtH1rOIgE4R4BtCh_3wEmOdrQB3ZATE3bFQ?e=7PPDUA',
     'Songkhla': 'https://1drv.ms/f/c/1523c4a0f21e9725/EhqiVQULdGFLgRZlir7AeMoBpqC1kag4xf6J1sgBfxXsTQ?e=LLMDn9',
-    'Airin': 'https://1drv.ms/f/c/1523c4a0f21e9725/ElrR_cBPAYNHgeXj6opsliQBVUHKp0BZlOHgx35MaIVmlQ?e=btokkm'
+    'Nakhonsithammarat': 'https://1drv.ms/f/c/1523c4a0f21e9725/Ejf6pr5sLmBImqO2fWjtDyEBXKv4vCKAcJsQrjpvFhUNtQ?e=Qf0sBy',
+    'Airin': 'https://1drv.ms/f/c/1523c4a0f21e9725/ElrR_cBPAYNHgeXj6opsliQBVUHKp0BZlOHgx35MaIVmlQ?e=btokkm',
+    'Chonburi': 'https://1drv.ms/f/c/1523c4a0f21e9725/EkuqlO7TlbpLtJxxxmGYV8IBcj5oOa7FhpMG_GP2qbbC6g?e=RzsFwV',
+    'Setsatian': 'https://1drv.ms/f/c/1523c4a0f21e9725/EjGGOJqGs2RHnTX_SGwz6DUBnpWqMjcS6MDKrHl6jEowmQ?e=6tTk3b'
 };
 
 // Google Drive direct links (with the same naming convention)
 const GDRIVE_LINKS = {
     'Chaiyaphum': 'https://drive.google.com/drive/folders/1YKVUug1p7cTN4jtkitW13N-thbutPqo_?usp=drive_link',
     'Songkhla': 'https://drive.google.com/drive/folders/14a8XOt06JgE_EeNlP-OMwxKe4zBTRrab?usp=drive_link',
-    'Airin': 'https://drive.google.com/drive/folders/1iW7-CYpyeEoeTznsrlnKA9hxawcnWjaM?usp=drive_link'
+    'Nakhonsithammarat': 'https://drive.google.com/drive/folders/1uHzDR4BW89mAfB5C9a-xqkytWtrtzQL2?usp=drive_link',
+    'Airin': 'https://drive.google.com/drive/folders/1iW7-CYpyeEoeTznsrlnKA9hxawcnWjaM?usp=drive_link',
+    'Chonburi': 'https://drive.google.com/drive/folders/1iAGSdew5n9ChqypIjjco2V7S_1QTwJlH?usp=drive_link',
+    'Setsatian': 'https://drive.google.com/drive/folders/15Zi5J8oTyJn-73hOb8WD3zYRq0nran77?usp=drive_link'
 };
 
 // Initialize
